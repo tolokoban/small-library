@@ -3,11 +3,22 @@ Aide au classement par thèmes d'articles rangés physiquement dans une biblioth
 La version de production se trouve ici : https://tolokoban.gihub.io/small-library/index.html
 
 # Spécifications
+Si l'application n'a aucun article enregistré, elle démarre sur l'écran __Ajout__, sinon elle démarre sur l'écran __Recherche__.
 
+## Les écrans
 L'application se veut extrèmement simple et utilisable préférablement sur téléphone.
 Elle se compose de trois écrans principaux :
 
-![Recherche](img/screen1.png) ![Résultat](img/screen2.png) ![Ajout](img/screen3.png) 
+### Recherche
+![Recherche](img/screen-1.png) 
+
+### Résultat
+![Résultat](img/screen-2.png) 
+
+### Ajout
+![Ajout](img/screen-3.png) 
+
+
 
 
 
