@@ -1,0 +1,14 @@
+{
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "tolokoban",
+    "url": "https://github.com/tolokoban/small-library"
+  },
+  "icons": {
+    "128": "/icon-128.png",
+    "512": "/icon-512.png"
+  },
+  "name": "small-library",
+  "version": "0.0.1",
+  "description": "Aide au classement par thèmes d'articles rangés physiquement dans une bibliothèque personnelle."
+}

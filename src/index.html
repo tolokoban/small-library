@@ -1,8 +1,52 @@
-<w-html app="main">
-    <section>
-        <center>
-            <wdg:button $text="English" $icon="flag-en" />
-            <wdg:button $text="Français" $icon="flag-fr" />
-        </center>
-    </section>
-</w-html>
+<x-html app="main">
+    <wdg:layout-stack $hash="^#([a-zA-Z0-9]+)" slot:args="onPage">        
+        <content>
+            <!-- ------------------------------------------------------------ -->
+            <section $$key="search">
+                <header class="thm-bgPD thm-ele12">
+                    <div>Recherche</div>
+                    <div class="icon">
+                        <wdg:floating-button $small="true" $type="primary" $icon="ok" />
+                    </div>
+                </header>
+                <article class="thm-bg0">
+                    <p>Il n'y a actuellement aucun article dans votre bibliothèque.</p>
+                    <p>Utilisez le bouton ci dessous pour en ajouter.</p>
+                </article>
+                <wdg:floating-button
+                  class="bottom-right" $type="secondary" $icon="add" $href="#add" />
+            </section>
+            <!-- ------------------------------------------------------------ -->
+            <section $$key="result">
+                <header class="thm-bgPD thm-ele12">
+                    <div class="icon">
+                        <wdg:floating-button $small="true" $type="primary" $icon="back" $href="#search" />
+                    </div>
+                    <div>Résultat(s)</div>
+                </header>
+                <article class="thm-bg0">
+                </article>
+            </section>
+            <!-- ------------------------------------------------------------ -->
+            <section $$key="add">
+                <header class="thm-bgPD thm-ele12">
+                    <div class="icon">
+                        <wdg:floating-button $small="true" $type="primary" $icon="cancel" $href="#search" />
+                    </div>
+                    <div>Ajout</div>
+                    <div class="icon">
+                        <wdg:floating-button $small="true" $type="primary" $icon="ok" />
+                    </div>
+                </header>
+                <article class="thm-bg0">
+                    <wdg:text id="add.id" $label="Identifiant unique" $wide="true" />
+                    <wdg:text id="add.title" $label="Titre de l'article" $wide="true" />
+                    <wdg:area id="add.desc" $label="Description (facultatif)" $wide="true" />
+                    <x-wdg name="categories" id="add.categories" />
+                    <wdg:text id="add.new-category"
+                      $label="Nouvelle catégorie" $wide="true" slot:action="onNewCategory" />
+                </article>
+            </section>
+        </content>
+    </wdg:layout-stack>
+</x-html>
