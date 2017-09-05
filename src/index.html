@@ -6,12 +6,11 @@
                 <header class="thm-bgPD thm-ele12">
                     <div>Recherche</div>
                     <div class="icon">
-                        <wdg:floating-button $small="true" $type="primary" $icon="ok" />
+                        <wdg:floating-button $small="true" $type="primary" $icon="ok" $href="#result" />
                     </div>
                 </header>
                 <article class="thm-bg0">
-                    <p>Il n'y a actuellement aucun article dans votre bibliothèque.</p>
-                    <p>Utilisez le bouton ci dessous pour en ajouter.</p>
+                    <x-wdg name="categories" id="search.categories" />
                 </article>
                 <wdg:floating-button
                   class="bottom-right" $type="secondary" $icon="add" $href="#add" />
@@ -25,6 +24,7 @@
                     <div>Résultat(s)</div>
                 </header>
                 <article class="thm-bg0">
+                    <div id="result"></div>
                 </article>
             </section>
             <!-- ------------------------------------------------------------ -->
@@ -35,7 +35,7 @@
                     </div>
                     <div>Ajout</div>
                     <div class="icon">
-                        <wdg:floating-button $small="true" $type="primary" $icon="ok" />
+                        <wdg:floating-button $small="true" $type="primary" $icon="ok" slot:action="onAdd" />
                     </div>
                 </header>
                 <article class="thm-bg0">

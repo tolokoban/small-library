@@ -12,9 +12,84 @@ var g_data = Local.get( "small-library", {
   art: []
 });
 
+/**
+ * Retourner une copie  de la liste des  catégories disponibles, triée
+ * par ordre alphabétique.
+ */
+exports.getCategories = function() {
+  var cat = g_data.cat.slice();
+  cat.sort();
+  return cat;
+};
+
 
 exports.getFreeId = function() {
-  return 1;
+  return "" + (g_data.id + 1);
+};
+
+
+/**
+ * Ajouter un nouvel article.
+ * @param {string} newArt.id.
+ * @param {string} newArt.title.
+ * @param {string} newArt.desc.
+ * @param {array}  newArt.cat  -  tableau  des  noms  des  catégories
+ * associées à cet article.
+ */
+exports.addArticle = function( newArt ) {
+  // On a des  noms de catégories, mais pour compresser  un peu, on ne
+  // va garder que les index de ces catégories.
+  var cat = [];
+  newArt.cat.forEach(function (name) {
+    var idx = g_data.cat.indexOf( name );
+    if( idx > -1 ) {
+      cat.push( idx );
+      return;
+    }
+    // On n'a pas trouvé la catégorie,  il faut donc la rajouter. Dans
+    // le futur,  on essaiera peut-être  de trouver la  catégorie dont
+    // l'orthographe  ressemble le  plus pour  éviter les  doublons de
+    // catégories.
+    idx = g_data.cat.length;
+    g_data.cat.push( name );
+    cat.push( idx );
+  });
+  // Incrémenter le générateur d'identifiants.
+  g_data.id++;
+  // Ajouter le nouvel article à la base de données.
+  g_data.art.push({
+    id: newArt.id,
+    title: newArt.title,
+    desc: newArt.desc,
+    cat: cat
+  });
+  // Sauvegarde.
+  exports.save();
+};
+
+
+exports.findArticles = function( categories ) {
+  var cat = [];
+  categories.forEach(function (name) {
+    var idx = g_data.cat.indexOf( name );
+    if( idx > -1 ) cat.push( idx );
+  });
+  // Retourner seulement les articles qui ont toutes les catégories.
+  return g_data.art.filter(function( art ) {
+    var score = 0;
+    cat.forEach(function (idx) {
+      if( art.cat.indexOf( idx ) > -1 ) score++;
+    });
+    if( score == cat.length ) return true;
+    return false;
+  });
+};
+
+/**
+ * Vérifie s'il existe ou non un article avec l'identifiant `id`.
+ */
+exports.exists = function( id ) {
+  return false;
 };
 
 
