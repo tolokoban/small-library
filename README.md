@@ -1,6 +1,6 @@
 # small-library
 Aide au classement par thèmes d'articles rangés physiquement dans une bibliothèque personnelle.
-La version de production se trouve ici : https://tolokoban.gihub.io/small-library/index.html
+La version de production se trouve ici : https://tolokoban.github.io/small-library/index.html
 
 # Spécifications
 Si l'application n'a aucun article enregistré, elle démarre sur l'écran __Ajout__, sinon elle démarre sur l'écran __Recherche__.
