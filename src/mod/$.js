@@ -1,4 +1,4 @@
-exports.config={"name":"\"small-library\"","description":"\"Aide au classement par thèmes d'articles rangés physiquement dans une bibliothèque personnelle.\"","author":"\"tolokoban\"","version":"\"0.0.1\"","major":"0","minor":"0","revision":"1","date":"2017-09-04T06:45:17.000Z","consts":{}};
+exports.config={"name":"\"small-library\"","description":"\"Aide au classement par thèmes d'articles rangés physiquement dans une bibliothèque personnelle.\"","author":"\"tolokoban\"","version":"\"0.0.3\"","major":"0","minor":"0","revision":"3","date":"2017-09-06T09:03:45.000Z","consts":{}};
 var currentLang = null;
 exports.lang = function(lang) {
     if (lang === undefined) {

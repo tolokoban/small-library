@@ -33,12 +33,19 @@
                     <div class="icon">
                         <wdg:floating-button $small="true" $type="primary" $icon="cancel" $href="#search" />
                     </div>
-                    <div>Ajout</div>
+                    <div id="add.header">Ajout</div>
                     <div class="icon">
                         <wdg:floating-button $small="true" $type="primary" $icon="ok" slot:action="onAdd" />
                     </div>
                 </header>
                 <article class="thm-bg0">
+                    <wdg:button id="add.delete"
+                      intl:text="delete"
+                      $icon="delete"
+                      $type="secondary"
+                      $wide="true"
+                      $flat="false"
+                      slot:action="onDeleteArticle"/>
                     <wdg:text id="add.id" $label="Identifiant unique" $wide="true" />
                     <wdg:text id="add.title" $label="Titre de l'article" $wide="true" />
                     <wdg:area id="add.desc" $label="Description (facultatif)" $wide="true" />

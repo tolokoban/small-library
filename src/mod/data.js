@@ -12,6 +12,12 @@ var g_data = Local.get( "small-library", {
   art: []
 });
 
+
+exports.countArticles = function() {
+  return g_data.art.length;
+};
+
+
 /**
  * Retourner une copie  de la liste des  catégories disponibles, triée
  * par ordre alphabétique.
@@ -28,6 +34,47 @@ exports.getFreeId = function() {
 };
 
 
+exports.deleteArticle = function( id ) {
+  var idx = g_data.art.findIndex(function( art ) {
+    return art.id == id;
+  });
+  if( idx === -1 ) return false;
+  g_data.art.splice( idx, 1 );
+  exports.save();
+  return true;
+};
+
+
+/**
+ * Retourner un  tableau de noms  de catégories à partir  d'un tableau
+ * d'index de catégories.
+ * @param {array} list - Tableau d'index de catégories.
+ */
+exports.idx2name = function( list ) {
+  return list.map(function( idx ) {
+    return g_data.cat[idx];
+  }).filter(function( itm ) {
+    // Ignorer les index inexistants.
+    return typeof itm !== 'undefined';
+  });
+};
+
+
+/**
+ * Retourner un tableau d'index de catégories à partir d'un tableau de
+ * noms de catégories.
+ * @param {array} list - Tableau de noms de catégories.
+ */
+exports.name2idx = function( list ) {
+  return list.map(function( name ) {
+    return g_data.cat.indexOf( name );
+  }).filter(function( itm ) {
+    // Ignorer les noms inexistants pour lesquels `indexOf` retourne -1.
+    return typeof itm != -1;
+  });
+};
+
+
 /**
  * Ajouter un nouvel article.
  * @param {string} newArt.id.
@@ -40,7 +87,7 @@ exports.addArticle = function( newArt ) {
   // On a des  noms de catégories, mais pour compresser  un peu, on ne
   // va garder que les index de ces catégories.
   var cat = [];
-  newArt.cat.forEach(function (name) {
+  newArt.catByName.forEach(function (name) {
     var idx = g_data.cat.indexOf( name );
     if( idx > -1 ) {
       cat.push( idx );
@@ -65,6 +112,17 @@ exports.addArticle = function( newArt ) {
   });
   // Sauvegarde.
   exports.save();
+};
+
+
+/**
+ * Retourner l'article dont l'identifiant est `id`.
+ * S'il n'existe pas, retourner undefined.
+ */
+exports.getArticle = function( id ) {
+  return g_data.art.find(function( art ) {
+    return art.id == id;
+  });
 };
 
 
