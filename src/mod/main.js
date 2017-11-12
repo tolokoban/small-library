@@ -99,7 +99,8 @@ exports.onDeleteArticle = function() {
 
 
 exports.onNewCategory = function( category ) {
-  category = ("" + category).trim().toLowerCase();
+  category = ("" + category).trim();
+  if( category.length === 0 ) return;
   var wdg = W('add.categories');
   wdg.addCategory( category, true );
   W('add.new-category').value = "";

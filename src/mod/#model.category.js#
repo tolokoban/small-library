@@ -1,0 +1,16 @@
+"use strict";
+
+var Tools = require("tools");
+var Binding = require("tfw.binding");
+
+var Category = function( name ) {
+  Binding.defProps(
+    this, {
+      name: name, 
+      id: Tools.toSearchableString( name ),
+      enabled: false
+    }
+  );
+};
+
+module.exports = Category;

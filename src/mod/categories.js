@@ -1,6 +1,6 @@
 /**
  * @class Categories
- * @param {array} list - List of catégory's names.
+ * @param {array} list - List of category's names.
  * @param {array} value - List of selected categories.
  */
 
@@ -8,8 +8,10 @@
 
 var $ = require( "dom" );
 var DB = require( "tfw.data-binding" );
+var Tools = require("tools");
 var Checkbox = require("wdg.checkbox");
 
+require("tfw.binding.array");
 
 var Categories = function( opts ) {
   var that = this;
